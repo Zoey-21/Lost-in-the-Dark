@@ -1,0 +1,42 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://sounds/goal_open.wav" type="AudioStream" id=1]
+[ext_resource path="res://level_parts/end.gd" type="Script" id=2]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 80, 72 )
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 72, 64 )
+
+[node name="end" type="Area2D"]
+script = ExtResource( 2 )
+
+[node name="ColorRect" type="ColorRect" parent="."]
+margin_right = 48.0
+margin_bottom = 48.0
+color = Color( 0.984314, 0.831373, 0.00392157, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( 24, 24 )
+shape = SubResource( 1 )
+disabled = true
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 2.0
+
+[node name="sound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 1 )
+volume_db = 8.854
+
+[node name="end" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="end"]
+position = Vector2( 24, 24 )
+shape = SubResource( 2 )
+disabled = true
+[connection signal="body_entered" from="." to="." method="_on_end_body_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

@@ -1,0 +1,94 @@
+[gd_scene load_steps=12 format=2]
+
+[ext_resource path="res://icon.png" type="Texture" id=1]
+[ext_resource path="res://level_parts/pickups.tscn" type="PackedScene" id=2]
+[ext_resource path="res://player/ship.tscn" type="PackedScene" id=3]
+[ext_resource path="res://level_parts/wonder_points.tscn" type="PackedScene" id=4]
+[ext_resource path="res://scripts/level.gd" type="Script" id=5]
+[ext_resource path="res://level_parts/end.tscn" type="PackedScene" id=6]
+[ext_resource path="res://ene.tscn" type="PackedScene" id=7]
+[ext_resource path="res://sounds/voices/level_9.wav" type="AudioStream" id=8]
+
+[sub_resource type="NavigationPolygon" id=1]
+vertices = PoolVector2Array( 768, 0, 1408, 8, 1400, 56, 768, 64, 1792, 896, 1800, 960, 1728, 960, 1464, 1088, 1472, 1152, 1408, 1152, 576, 192, 320, 768, 256, 776, 256, 704, 320, 448, 384, 320, 448, 248, 704, 1088, 576, 1096, 576, 1024, 256, 512, 256, 448, 320, 320, 448, 192, 704, 120, 704, 64, 1464, 128, 1600, 128, 1600, 192, 1728, 192, 1728, 256, 1600, 1024, 1784, 256, 1784, 320, 1848, 320, 1848, 448, 1920, 448, 1920, 520, 1920, 704, 1920, 768, 1856, 768, 1856, 896, 1600, 1088, 1408, 1216, 768, 1216, 760, 1152, 704, 1152, 448, 1024, 448, 960, 384, 960, 384, 896, 320, 896, 192, 704, 192, 512, 576, 128, 384, 256, 1464, 64, 1720, 1024, 1920, 640, 1928, 672 )
+polygons = [ PoolIntArray( 0, 1, 2, 3 ), PoolIntArray( 4, 5, 6 ), PoolIntArray( 7, 8, 9 ), PoolIntArray( 10, 11, 12, 13, 14, 15, 16 ), PoolIntArray( 17, 18, 19 ), PoolIntArray( 20, 21, 14 ), PoolIntArray( 14, 22, 15 ), PoolIntArray( 16, 23, 10 ), PoolIntArray( 24, 25, 3, 26 ), PoolIntArray( 26, 27, 28, 10 ), PoolIntArray( 28, 29, 30, 31 ), PoolIntArray( 30, 32, 33, 31 ), PoolIntArray( 6, 31, 33, 34, 35, 4 ), PoolIntArray( 35, 36, 37 ), PoolIntArray( 38, 39, 40 ), PoolIntArray( 40, 41, 4, 35 ), PoolIntArray( 31, 42, 7, 10 ), PoolIntArray( 9, 43, 44, 45 ), PoolIntArray( 45, 46, 17, 7 ), PoolIntArray( 19, 47, 48, 10 ), PoolIntArray( 48, 49, 50, 10 ), PoolIntArray( 50, 51, 11, 10 ), PoolIntArray( 13, 52, 53, 20 ), PoolIntArray( 10, 54, 24, 26 ), PoolIntArray( 15, 55, 16 ), PoolIntArray( 2, 56, 26, 3 ), PoolIntArray( 6, 57, 31 ), PoolIntArray( 7, 9, 45 ), PoolIntArray( 13, 20, 14 ), PoolIntArray( 35, 37, 58, 40 ), PoolIntArray( 59, 38, 40, 58 ), PoolIntArray( 10, 28, 31 ), PoolIntArray( 10, 7, 17, 19 ) ]
+outlines = [ PoolVector2Array( 192, 512, 192, 704, 256, 704, 256, 776, 320, 768, 320, 896, 384, 896, 384, 960, 448, 960, 448, 1024, 576, 1024, 576, 1096, 704, 1088, 704, 1152, 760, 1152, 768, 1216, 1408, 1216, 1408, 1152, 1472, 1152, 1464, 1088, 1600, 1088, 1600, 1024, 1720, 1024, 1728, 960, 1800, 960, 1792, 896, 1856, 896, 1856, 768, 1920, 768, 1920, 704, 1928, 672, 1920, 640, 1920, 520, 1920, 448, 1848, 448, 1848, 320, 1784, 320, 1784, 256, 1728, 256, 1728, 192, 1600, 192, 1600, 128, 1464, 128, 1464, 64, 1400, 56, 1408, 8, 768, 0, 768, 64, 704, 64, 704, 120, 576, 128, 576, 192, 448, 192, 448, 248, 384, 256, 384, 320, 320, 320, 320, 448, 256, 448, 256, 512 ) ]
+
+[sub_resource type="ConvexPolygonShape2D" id=2]
+points = PoolVector2Array( 0, 0, 64, 0, 64, 64, 0, 64 )
+
+[sub_resource type="TileSet" id=3]
+0/name = "icon.png 0"
+0/texture = ExtResource( 1 )
+0/tex_offset = Vector2( 0, 0 )
+0/modulate = Color( 1, 1, 1, 1 )
+0/region = Rect2( 0, 0, 64, 64 )
+0/tile_mode = 0
+0/occluder_offset = Vector2( 0, 0 )
+0/navigation_offset = Vector2( 0, 0 )
+0/shape_offset = Vector2( 0, 0 )
+0/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+0/shape = SubResource( 2 )
+0/shape_one_way = false
+0/shape_one_way_margin = 1.0
+0/shapes = [ {
+"autotile_coord": Vector2( 0, 0 ),
+"one_way": false,
+"one_way_margin": 1.0,
+"shape": SubResource( 2 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
+} ]
+0/z_index = 0
+
+[node name="level" type="Navigation2D"]
+script = ExtResource( 5 )
+
+[node name="NavigationPolygonInstance" type="NavigationPolygonInstance" parent="."]
+navpoly = SubResource( 1 )
+
+[node name="pickup" parent="." instance=ExtResource( 2 )]
+position = Vector2( 1464, 608 )
+
+[node name="pickup2" parent="." instance=ExtResource( 2 )]
+position = Vector2( 1656, 952 )
+
+[node name="pickup3" parent="." instance=ExtResource( 2 )]
+position = Vector2( 1640, 248 )
+
+[node name="pickup4" parent="." instance=ExtResource( 2 )]
+position = Vector2( 968, 176 )
+
+[node name="pickup5" parent="." instance=ExtResource( 2 )]
+position = Vector2( 984, 1056 )
+
+[node name="pickup6" parent="." instance=ExtResource( 2 )]
+position = Vector2( 1128, 600 )
+
+[node name="TileMap" type="TileMap" parent="."]
+modulate = Color( 0, 0, 0, 1 )
+tile_set = SubResource( 3 )
+format = 1
+tile_data = PoolIntArray( -1, 0, 0, -65536, 0, 0, -65535, 0, 0, -65534, 0, 0, -65533, 0, 0, -65532, 0, 0, -65531, 0, 0, -65530, 0, 0, -65529, 0, 0, -65528, 0, 0, -65527, 0, 0, -65526, 0, 0, -65525, 0, 0, -65524, 0, 0, -65523, 0, 0, -65522, 0, 0, -65521, 0, 0, -65520, 0, 0, -65519, 0, 0, -65518, 0, 0, -65517, 0, 0, -65516, 0, 0, -65515, 0, 0, -65514, 0, 0, -65513, 0, 0, -65512, 0, 0, -65511, 0, 0, -65510, 0, 0, -65509, 0, 0, -65508, 0, 0, -65507, 0, 0, -65506, 0, 0, -65505, 0, 0, -65504, 0, 0, 65535, 0, 0, 10, 0, 0, 11, 0, 0, 22, 0, 0, 23, 0, 0, 32, 0, 0, 131071, 0, 0, 65544, 0, 0, 65545, 0, 0, 65546, 0, 0, 65559, 0, 0, 65560, 0, 0, 65561, 0, 0, 65568, 0, 0, 196607, 0, 0, 131078, 0, 0, 131079, 0, 0, 131080, 0, 0, 131097, 0, 0, 131098, 0, 0, 131099, 0, 0, 131104, 0, 0, 262143, 0, 0, 196613, 0, 0, 196614, 0, 0, 196635, 0, 0, 196636, 0, 0, 196640, 0, 0, 327679, 0, 0, 262148, 0, 0, 262149, 0, 0, 262172, 0, 0, 262173, 0, 0, 262176, 0, 0, 393215, 0, 0, 327684, 0, 0, 327709, 0, 0, 327712, 0, 0, 458751, 0, 0, 393219, 0, 0, 393220, 0, 0, 393245, 0, 0, 393246, 0, 0, 393248, 0, 0, 524287, 0, 0, 458754, 0, 0, 458755, 0, 0, 458782, 0, 0, 458783, 0, 0, 458784, 0, 0, 458785, 0, 0, 458786, 0, 0, 458787, 0, 0, 458788, 0, 0, 458789, 0, 0, 589823, 0, 0, 524290, 0, 0, 524318, 0, 0, 524325, 0, 0, 655359, 0, 0, 589826, 0, 0, 589854, 0, 0, 589861, 0, 0, 720895, 0, 0, 655362, 0, 0, 655390, 0, 0, 655397, 0, 0, 786431, 0, 0, 720898, 0, 0, 720899, 0, 0, 720926, 0, 0, 720927, 0, 0, 720928, 0, 0, 720929, 0, 0, 720930, 0, 0, 720931, 0, 0, 720932, 0, 0, 720933, 0, 0, 851967, 0, 0, 786435, 0, 0, 786436, 0, 0, 786461, 0, 0, 786462, 0, 0, 786464, 0, 0, 917503, 0, 0, 851972, 0, 0, 851997, 0, 0, 852000, 0, 0, 983039, 0, 0, 917508, 0, 0, 917509, 0, 0, 917532, 0, 0, 917533, 0, 0, 917536, 0, 0, 1048575, 0, 0, 983045, 0, 0, 983046, 0, 0, 983067, 0, 0, 983068, 0, 0, 983072, 0, 0, 1114111, 0, 0, 1048582, 0, 0, 1048583, 0, 0, 1048584, 0, 0, 1048601, 0, 0, 1048602, 0, 0, 1048603, 0, 0, 1048608, 0, 0, 1179647, 0, 0, 1114120, 0, 0, 1114121, 0, 0, 1114122, 0, 0, 1114135, 0, 0, 1114136, 0, 0, 1114137, 0, 0, 1114144, 0, 0, 1245183, 0, 0, 1179658, 0, 0, 1179659, 0, 0, 1179670, 0, 0, 1179671, 0, 0, 1179680, 0, 0, 1310719, 0, 0, 1245184, 0, 0, 1245185, 0, 0, 1245186, 0, 0, 1245187, 0, 0, 1245188, 0, 0, 1245189, 0, 0, 1245190, 0, 0, 1245191, 0, 0, 1245192, 0, 0, 1245193, 0, 0, 1245194, 0, 0, 1245195, 0, 0, 1245196, 0, 0, 1245197, 0, 0, 1245198, 0, 0, 1245199, 0, 0, 1245200, 0, 0, 1245201, 0, 0, 1245202, 0, 0, 1245203, 0, 0, 1245204, 0, 0, 1245205, 0, 0, 1245206, 0, 0, 1245207, 0, 0, 1245208, 0, 0, 1245209, 0, 0, 1245210, 0, 0, 1245211, 0, 0, 1245212, 0, 0, 1245213, 0, 0, 1245214, 0, 0, 1245215, 0, 0, 1245216, 0, 0 )
+
+[node name="end" parent="." instance=ExtResource( 6 )]
+position = Vector2( 1800, 576 )
+
+[node name="ene" parent="." instance=ExtResource( 7 )]
+position = Vector2( 1184, 40 )
+
+[node name="ene2" parent="." instance=ExtResource( 7 )]
+position = Vector2( 1176, 1160 )
+
+[node name="ship" parent="." instance=ExtResource( 3 )]
+position = Vector2( 240, 608 )
+rotation = 1.5708
+
+[node name="wonder_points" parent="." instance=ExtResource( 4 )]
+position = Vector2( 1328, 1120 )
+
+[node name="wonder_points2" parent="." instance=ExtResource( 4 )]
+position = Vector2( 1352, 80 )
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 8 )
+[connection signal="finished" from="AudioStreamPlayer" to="." method="_on_AudioStreamPlayer_finished"]

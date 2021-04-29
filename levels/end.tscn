@@ -1,0 +1,52 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://sounds/voices/ending.wav" type="AudioStream" id=1]
+[ext_resource path="res://Dynastium-Kjvy.ttf" type="DynamicFontData" id=2]
+
+[sub_resource type="DynamicFont" id=1]
+size = 29
+font_data = ExtResource( 2 )
+
+[node name="end" type="Node2D"]
+
+[node name="ColorRect" type="ColorRect" parent="."]
+margin_right = 1024.0
+margin_bottom = 600.0
+color = Color( 0, 0, 0, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="level" type="Label" parent="ColorRect"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -512.0
+margin_top = -44.0
+margin_right = 512.0
+margin_bottom = -14.0
+custom_fonts/font = SubResource( 1 )
+text = "Thanks For Playing!"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="title" type="Label" parent="ColorRect"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -504.0
+margin_top = 64.0
+margin_right = 512.0
+margin_bottom = 94.0
+custom_fonts/font = SubResource( 1 )
+text = "Lost In The Dark"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 1 )
+autoplay = true

@@ -1,0 +1,89 @@
+[gd_scene load_steps=12 format=2]
+
+[ext_resource path="res://icon.png" type="Texture" id=1]
+[ext_resource path="res://level_parts/pickups.tscn" type="PackedScene" id=2]
+[ext_resource path="res://player/ship.tscn" type="PackedScene" id=3]
+[ext_resource path="res://level_parts/wonder_points.tscn" type="PackedScene" id=4]
+[ext_resource path="res://scripts/level.gd" type="Script" id=5]
+[ext_resource path="res://level_parts/end.tscn" type="PackedScene" id=6]
+[ext_resource path="res://ene.tscn" type="PackedScene" id=7]
+[ext_resource path="res://sounds/voices/level_7.wav" type="AudioStream" id=8]
+
+[sub_resource type="NavigationPolygon" id=1]
+vertices = PoolVector2Array( 2112, 1016, 1664, 1024, 1664, 768, 1856, 768, 2112, 448, 1856, 704, 1280, 448, 1544, 704, 1280, 1024, 512, 1024, 520, 200, 1280, 704, 1536, 192, 1536, 384, 1280, 384, 1544, 768, 1600, 768, 1600, 1024, 1352, 1024, 1344, 704 )
+polygons = [ PoolIntArray( 0, 1, 2, 3 ), PoolIntArray( 4, 0, 3, 5 ), PoolIntArray( 6, 4, 5, 7 ), PoolIntArray( 8, 9, 10, 11 ), PoolIntArray( 10, 12, 13, 14 ), PoolIntArray( 15, 16, 17, 18 ), PoolIntArray( 15, 18, 19, 7 ), PoolIntArray( 6, 7, 19 ), PoolIntArray( 6, 19, 11, 10 ), PoolIntArray( 6, 10, 14 ) ]
+outlines = [ PoolVector2Array( 520, 200, 1536, 192, 1536, 384, 1280, 384, 1280, 448, 2112, 448, 2112, 1016, 1664, 1024, 1664, 768, 1856, 768, 1856, 704, 1544, 704, 1544, 768, 1600, 768, 1600, 1024, 1352, 1024, 1344, 704, 1280, 704, 1280, 1024, 512, 1024 ) ]
+
+[sub_resource type="ConvexPolygonShape2D" id=2]
+points = PoolVector2Array( 0, 0, 64, 0, 64, 64, 0, 64 )
+
+[sub_resource type="TileSet" id=3]
+0/name = "icon.png 0"
+0/texture = ExtResource( 1 )
+0/tex_offset = Vector2( 0, 0 )
+0/modulate = Color( 1, 1, 1, 1 )
+0/region = Rect2( 0, 0, 64, 64 )
+0/tile_mode = 0
+0/occluder_offset = Vector2( 0, 0 )
+0/navigation_offset = Vector2( 0, 0 )
+0/shape_offset = Vector2( 0, 0 )
+0/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+0/shape = SubResource( 2 )
+0/shape_one_way = false
+0/shape_one_way_margin = 1.0
+0/shapes = [ {
+"autotile_coord": Vector2( 0, 0 ),
+"one_way": false,
+"one_way_margin": 1.0,
+"shape": SubResource( 2 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
+} ]
+0/z_index = 0
+
+[node name="level" type="Navigation2D"]
+script = ExtResource( 5 )
+
+[node name="NavigationPolygonInstance" type="NavigationPolygonInstance" parent="."]
+position = Vector2( -256, 64 )
+navpoly = SubResource( 1 )
+
+[node name="pickup" parent="." instance=ExtResource( 2 )]
+position = Vector2( 1208, 944 )
+
+[node name="pickup2" parent="." instance=ExtResource( 2 )]
+position = Vector2( 1192, 320 )
+
+[node name="pickup3" parent="." instance=ExtResource( 2 )]
+position = Vector2( 624, 712 )
+
+[node name="pickup4" parent="." instance=ExtResource( 2 )]
+position = Vector2( 640, 992 )
+
+[node name="pickup5" parent="." instance=ExtResource( 2 )]
+position = Vector2( 1520, 928 )
+
+[node name="TileMap" type="TileMap" parent="."]
+modulate = Color( 0, 0, 0, 1 )
+tile_set = SubResource( 3 )
+format = 1
+tile_data = PoolIntArray( -1, 0, 0, -65536, 0, 0, -65535, 0, 0, -65534, 0, 0, -65533, 0, 0, -65532, 0, 0, -65531, 0, 0, -65530, 0, 0, -65529, 0, 0, -65528, 0, 0, -65527, 0, 0, -65526, 0, 0, -65525, 0, 0, -65524, 0, 0, -65523, 0, 0, -65522, 0, 0, -65521, 0, 0, -65520, 0, 0, -65519, 0, 0, -65518, 0, 0, -65517, 0, 0, -65516, 0, 0, -65515, 0, 0, -65514, 0, 0, -65513, 0, 0, -65512, 0, 0, -65511, 0, 0, -65510, 0, 0, -65509, 0, 0, -65508, 0, 0, -65507, 0, 0, -65506, 0, 0, -65505, 0, 0, -65504, 0, 0, 65535, 0, 0, 32, 0, 0, 131071, 0, 0, 65568, 0, 0, 196607, 0, 0, 131104, 0, 0, 262143, 0, 0, 196611, 0, 0, 196612, 0, 0, 196613, 0, 0, 196614, 0, 0, 196615, 0, 0, 196616, 0, 0, 196617, 0, 0, 196618, 0, 0, 196619, 0, 0, 196620, 0, 0, 196621, 0, 0, 196622, 0, 0, 196623, 0, 0, 196624, 0, 0, 196625, 0, 0, 196626, 0, 0, 196627, 0, 0, 196628, 0, 0, 196640, 0, 0, 327679, 0, 0, 262147, 0, 0, 262164, 0, 0, 262176, 0, 0, 393215, 0, 0, 327683, 0, 0, 327700, 0, 0, 327712, 0, 0, 458751, 0, 0, 393219, 0, 0, 393236, 0, 0, 393248, 0, 0, 524287, 0, 0, 458755, 0, 0, 458768, 0, 0, 458769, 0, 0, 458770, 0, 0, 458771, 0, 0, 458772, 0, 0, 458773, 0, 0, 458774, 0, 0, 458775, 0, 0, 458776, 0, 0, 458777, 0, 0, 458778, 0, 0, 458779, 0, 0, 458780, 0, 0, 458781, 0, 0, 458784, 0, 0, 589823, 0, 0, 524291, 0, 0, 524317, 0, 0, 524320, 0, 0, 655359, 0, 0, 589827, 0, 0, 589853, 0, 0, 589856, 0, 0, 720895, 0, 0, 655363, 0, 0, 655389, 0, 0, 655392, 0, 0, 786431, 0, 0, 720899, 0, 0, 720925, 0, 0, 720928, 0, 0, 851967, 0, 0, 786435, 0, 0, 786448, 0, 0, 786452, 0, 0, 786453, 0, 0, 786454, 0, 0, 786455, 0, 0, 786456, 0, 0, 786461, 0, 0, 786464, 0, 0, 917503, 0, 0, 851971, 0, 0, 851975, 0, 0, 851976, 0, 0, 851977, 0, 0, 851978, 0, 0, 851979, 0, 0, 851980, 0, 0, 851984, 0, 0, 851989, 0, 0, 851997, 0, 0, 852000, 0, 0, 983039, 0, 0, 917507, 0, 0, 917520, 0, 0, 917525, 0, 0, 917533, 0, 0, 917536, 0, 0, 1048575, 0, 0, 983043, 0, 0, 983056, 0, 0, 983061, 0, 0, 983069, 0, 0, 983072, 0, 0, 1114111, 0, 0, 1048579, 0, 0, 1048592, 0, 0, 1048597, 0, 0, 1048605, 0, 0, 1048608, 0, 0, 1179647, 0, 0, 1114115, 0, 0, 1114116, 0, 0, 1114117, 0, 0, 1114118, 0, 0, 1114119, 0, 0, 1114120, 0, 0, 1114121, 0, 0, 1114122, 0, 0, 1114123, 0, 0, 1114124, 0, 0, 1114125, 0, 0, 1114126, 0, 0, 1114127, 0, 0, 1114128, 0, 0, 1114129, 0, 0, 1114130, 0, 0, 1114131, 0, 0, 1114132, 0, 0, 1114133, 0, 0, 1114134, 0, 0, 1114135, 0, 0, 1114136, 0, 0, 1114137, 0, 0, 1114138, 0, 0, 1114139, 0, 0, 1114140, 0, 0, 1114141, 0, 0, 1114144, 0, 0, 1245183, 0, 0, 1179680, 0, 0, 1310719, 0, 0, 1245184, 0, 0, 1245185, 0, 0, 1245186, 0, 0, 1245187, 0, 0, 1245188, 0, 0, 1245189, 0, 0, 1245190, 0, 0, 1245191, 0, 0, 1245192, 0, 0, 1245193, 0, 0, 1245194, 0, 0, 1245195, 0, 0, 1245196, 0, 0, 1245197, 0, 0, 1245198, 0, 0, 1245199, 0, 0, 1245200, 0, 0, 1245201, 0, 0, 1245202, 0, 0, 1245203, 0, 0, 1245204, 0, 0, 1245205, 0, 0, 1245206, 0, 0, 1245207, 0, 0, 1245208, 0, 0, 1245209, 0, 0, 1245210, 0, 0, 1245211, 0, 0, 1245212, 0, 0, 1245213, 0, 0, 1245214, 0, 0, 1245215, 0, 0, 1245216, 0, 0 )
+
+[node name="end" parent="." instance=ExtResource( 6 )]
+position = Vector2( 1728, 944 )
+
+[node name="ene" parent="." instance=ExtResource( 7 )]
+position = Vector2( 1320, 616 )
+
+[node name="ship" parent="." instance=ExtResource( 3 )]
+position = Vector2( 304, 408 )
+rotation = 1.5708
+
+[node name="wonder_points" parent="." instance=ExtResource( 4 )]
+position = Vector2( 1080, 992 )
+
+[node name="wonder_points2" parent="." instance=ExtResource( 4 )]
+position = Vector2( 1056, 224 )
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 8 )
+[connection signal="finished" from="AudioStreamPlayer" to="." method="_on_AudioStreamPlayer_finished"]
