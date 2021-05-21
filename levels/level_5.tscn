@@ -79,4 +79,5 @@ stream = ExtResource( 8 )
 [node name="ship" parent="." instance=ExtResource( 3 )]
 position = Vector2( 72, 576 )
 rotation = 1.5708
+
 [connection signal="finished" from="AudioStreamPlayer" to="." method="_on_AudioStreamPlayer_finished"]

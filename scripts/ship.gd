@@ -9,8 +9,8 @@ var rotate = 0
 var start = false
 
 
-func _ready():
-	$ColorRect.visible = true
+#func _ready():
+#	$ColorRect.visible = true
 
 func _physics_process(delta):
 	if pickups.size() > 0:
@@ -70,3 +70,13 @@ func _process(_delta):
 
 func _on_disable_moves_timeout():
 	start = true
+
+
+func _on_front_area_entered(area):
+	if area.is_in_group("pickups"):
+		area.behind = false
+
+
+func _on_back_area_entered(area):
+	if area.is_in_group("pickups"):
+		area.behind = true
