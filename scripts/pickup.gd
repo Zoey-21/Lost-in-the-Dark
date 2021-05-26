@@ -2,7 +2,11 @@ extends Area2D
 
 var behind = false
 var playback_sec
+var sound_offset
 
+func _ready():
+	sound_offset = rand_range(0,1.5)
+	$sound_play.wait_time = $sound_play.wait_time + sound_offset
 func _physics_process(delta):
 	if $sound.playing and behind:
 		playback_sec = $sound.get_playback_position()

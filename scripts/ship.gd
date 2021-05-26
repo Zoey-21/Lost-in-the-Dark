@@ -9,8 +9,8 @@ var rotate = 0
 var start = false
 
 
-#func _ready():
-#	$ColorRect.visible = true
+func _ready():
+	$ColorRect.visible = true
 
 func _physics_process(delta):
 	if pickups.size() > 0:
@@ -24,17 +24,22 @@ func _physics_process(delta):
 	if start:
 		if Input.is_action_pressed("rot_left"):
 			rotate = -1
+			if $turning/turn_Timer.is_stopped():
+				$turning/turn_Timer.start()
 		if Input.is_action_pressed("rot_right"):
 			rotate = 1
+			if $turning/turn_Timer.is_stopped():
+				$turning/turn_Timer.start()
 		if !Input.is_action_pressed("rot_left") and !Input.is_action_pressed("rot_right"):
 			$turning.playing = false
-		else:
-			if !$turning.playing:
-				$turning.play()
 		if Input.is_action_pressed("move_up"):
 			move = -1
+			if !$thrusters.playing:
+				$thrusters.play()
 		if Input.is_action_pressed("move_down"):
 			move = 1
+			if !$thrusters.playing:
+				$thrusters.play()
 		if !Input.is_action_pressed("move_down") and !Input.is_action_pressed("move_up"):
 			$thrusters.playing = false
 	if move != 0:
@@ -42,10 +47,10 @@ func _physics_process(delta):
 			$thrusters.play()
 	if Input.is_action_pressed("run"):
 		speed = 400
-		$thrusters.pitch_scale = 2
+		$thrusters.pitch_scale = 1
 	else:
 		speed = 200
-		$thrusters.pitch_scale = 1
+		$thrusters.pitch_scale = 0.7
 
 	if $turning.playing and !Input.is_action_pressed("run"):
 		$thrusters.playing = false
@@ -80,3 +85,13 @@ func _on_front_area_entered(area):
 func _on_back_area_entered(area):
 	if area.is_in_group("pickups"):
 		area.behind = true
+
+
+func _on_turn_Timer_timeout():
+	$turning.play()
+
+
+
+func _on_bump_body_entered(body):
+	if !body.is_in_group("shot"):
+		$bump/bump_sound.play()

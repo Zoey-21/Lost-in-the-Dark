@@ -3,7 +3,6 @@
 [ext_resource path="res://icon.png" type="Texture" id=1]
 [ext_resource path="res://scripts/ship.gd" type="Script" id=2]
 [ext_resource path="res://sounds/thrusters.wav" type="AudioStream" id=3]
-[ext_resource path="res://sounds/turning.wav" type="AudioStream" id=4]
 [ext_resource path="res://sounds/bump.wav" type="AudioStream" id=5]
 [ext_resource path="res://Dynastium-Kjvy.ttf" type="DynamicFontData" id=6]
 
@@ -15,6 +14,9 @@ font_data = ExtResource( 6 )
 
 [sub_resource type="RectangleShape2D" id=3]
 extents = Vector2( 1072.81, 669.49 )
+
+[sub_resource type="RectangleShape2D" id=4]
+extents = Vector2( 6.90894, 10 )
 
 [node name="ship" type="KinematicBody2D"]
 rotation = 6.28319
@@ -35,10 +37,15 @@ current = true
 
 [node name="thrusters" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 3 )
-pitch_scale = 0.5
+volume_db = -3.029
 
 [node name="turning" type="AudioStreamPlayer" parent="."]
-stream = ExtResource( 4 )
+stream = ExtResource( 3 )
+volume_db = -3.029
+
+[node name="turn_Timer" type="Timer" parent="turning"]
+wait_time = 0.5
+one_shot = true
 
 [node name="ColorRect" type="ColorRect" parent="."]
 visible = false
@@ -87,6 +94,18 @@ shape = SubResource( 3 )
 position = Vector2( 1.41721, 677.146 )
 shape = SubResource( 3 )
 
+[node name="bump" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="bump"]
+position = Vector2( -3.00801e-05, -6.73478 )
+shape = SubResource( 4 )
+
+[node name="bump_sound" type="AudioStreamPlayer2D" parent="bump"]
+stream = ExtResource( 5 )
+volume_db = 7.068
+
+[connection signal="timeout" from="turning/turn_Timer" to="." method="_on_turn_Timer_timeout"]
 [connection signal="timeout" from="disable_moves" to="." method="_on_disable_moves_timeout"]
 [connection signal="area_entered" from="front" to="." method="_on_front_area_entered"]
 [connection signal="area_entered" from="back" to="." method="_on_back_area_entered"]
+[connection signal="body_entered" from="bump" to="." method="_on_bump_body_entered"]
